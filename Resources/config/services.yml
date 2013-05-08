@@ -1,0 +1,36 @@
+parameters:
+    crossborne_parameter.form.subscriber.class: crossborne\ParameterBundle\Form\ParametersSubscriber
+    crossborne_parameter.form.type.collection.class: crossborne\ParameterBundle\Form\CollectionType
+    crossborne_parameter.form.type.parameters.class: crossborne\ParameterBundle\Form\ObjectParametersType
+    crossborne_parameter.form.type.parameter.class: crossborne\ParameterBundle\Form\ObjectParameterValueType
+    crossborne_parameter.doctrine.subscriber.class: crossborne\ParameterBundle\Services\ParametrizedObjectListener
+    crossborne_parameter.manager.class: crossborne\ParameterBundle\Services\ObjectParameterValueManager
+services:
+    crossborne_parameter.manager:
+        class: %crossborne_parameter.manager.class%
+        arguments: [@doctrine.orm.entity_manager]
+    crossborne_parameter.form.type.parameters_collection:
+        class: %crossborne_parameter.form.type.collection.class%
+        tags:
+            - { name: form.type, alias: crossborne_parameterbundle_parameters_collection }
+    crossborne_parameter.form.subscriber:
+        class: %crossborne_parameter.form.subscriber.class%
+        arguments: [@crossborne_parameter.manager, @router]
+    crossborne_parameter.form.type.parameter:
+        class: %crossborne_parameter.form.type.parameter.class%
+        tags:
+            - { name: form.type, alias: parameter }
+    crossborne_parameter.doctrine.subscriber:
+        class: %crossborne_parameter.doctrine.subscriber.class%
+        arguments: [@service_container] #whole fuckin container because of circular reference problem with subscribers/listeners
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+    crossborne_parameter.twig.filter_extension:
+        class: crossborne\ParameterBundle\Extension\FilterExtension
+        arguments: []
+        tags:
+            - { name: twig.extension }
+
+#    crossborne_parameter.example:
+#        class: %crossborne_parameter.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

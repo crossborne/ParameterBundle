@@ -1,0 +1,22 @@
+{% if parameters|length %}
+    <ul>
+        {% for p in parameters %}
+            {% if p.value.value is not null or p.hasChildren %}
+                <li>
+                    {% if p.parameter.type == 4 %}
+                        {{ p.parameter.caption }}:
+                        {% if p.value.value == 1 %}
+                            <strong>Ano</strong>
+                        {% else %}
+                            <strong>Ne</strong>
+                        {% endif %}
+                    {% else %}
+                        {{ p.parameter.caption }}: <strong>{{ p.value.value }} {{ p.parameter.units }}</strong>
+                    {% endif %}
+
+                    {% include "crossborneParameterBundle::parameters.html.twig" with { 'parameters': p.children } %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

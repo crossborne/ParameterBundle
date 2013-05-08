@@ -1,0 +1,18 @@
+{% for parameter in parameters %}
+    {% if parameter.children|length > 0 %}
+        <div class="span">
+            <strong>{{ parameter.caption }}</strong><br />
+            {% render url('filter_show', { parentId: parameter.id }) %}
+        </div>
+    {% else %}
+        {{ parameter.caption }}<br />
+        {% for value in parameter.values %}
+            {% if value.value is not null %}
+                <div>
+                    <input type="checkbox" name="val[{{ parameter.id }}][]" value="{{ value.value }}" id="val{{ value.id }}" />
+                    <label for="val{{ value.id }}" style="display: inline;">{{ value.value }}</label>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}

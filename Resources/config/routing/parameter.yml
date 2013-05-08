@@ -1,0 +1,30 @@
+parameter:
+    pattern:  /
+    defaults: { _controller: "crossborneParameterBundle:Parameter:index" }
+
+parameter_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "crossborneParameterBundle:Parameter:show" }
+
+parameter_new:
+    pattern:  /new
+    defaults: { _controller: "crossborneParameterBundle:Parameter:new" }
+
+parameter_create:
+    pattern:  /create
+    defaults: { _controller: "crossborneParameterBundle:Parameter:create" }
+    requirements: { _method: post }
+
+parameter_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "crossborneParameterBundle:Parameter:edit" }
+
+parameter_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "crossborneParameterBundle:Parameter:update" }
+    requirements: { _method: post|put }
+
+parameter_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "crossborneParameterBundle:Parameter:delete" }
+    requirements: { _method: post|delete }

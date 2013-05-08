@@ -1,0 +1,11 @@
+crossborneParameterBundle_parameter:
+        resource: "@crossborneParameterBundle/Resources/config/routing/parameter.yml"
+        prefix:   /parameter
+
+crossborneParameterBundle_parametervalue:
+        resource: "@crossborneParameterBundle/Resources/config/routing/parametervalue.yml"
+        prefix:   /parametervalue
+
+crossborneParameterBundle_filter:
+        resource: "@crossborneParameterBundle/Resources/config/routing/filter.yml"
+        prefix:   /filter

@@ -1,0 +1,3 @@
+parametervalue:
+    pattern:  /{id}?{search}
+    defaults: { _controller: "crossborneParameterBundle:ParameterValue:index", search: null }
