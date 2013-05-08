@@ -35,6 +35,16 @@ public function registerBundles() {
 }
 ```
 
+Add form templates into app/config.yml for proper parameter forms rendering
+```yml
+# Twig Configuration
+twig:
+	...
+	form:
+		resources:
+			- 'crossborneParameterBundle:Form:fields.html.twig'
+```
+
 Add this into app/config/routing.yml for parameter-lists administration
 ```yml
 crossborne_parameter:
