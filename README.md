@@ -113,5 +113,5 @@ And in your twig template just use:
 
 ```
 
-Now you should be ready to go!
+Now it should be ready to use!
 ------------------------------
