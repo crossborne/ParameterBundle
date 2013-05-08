@@ -14,8 +14,8 @@
         "symfony/framework-bundle": ">=2.0"
     },
     "autoload":     {
-        "psr-0": { "crossborne\\Bundle\\ParameterBundle": "" }
+        "psr-0": { "crossborne\\ParameterBundle": "" }
     },
-    "target-dir": "crossborne/Bundle/ParameterBundle",
+    "target-dir": "crossborne/ParameterBundle",
     "minimum-stability": "dev"
 }
