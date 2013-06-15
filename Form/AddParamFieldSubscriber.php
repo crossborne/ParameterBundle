@@ -42,7 +42,7 @@ class AddParamFieldSubscriber implements EventSubscriberInterface {
 
 		$form->add('value', new ParameterValueType($this->router), array(
 			'label' => ' ', //$data->getParameter()->getCaption(),
-			'required' => false
+			'required' => $data->getParameter()->isRequired()
 		));
 
 		$form->add('children', 'crossborne_parameterbundle_parameters_collection', array(

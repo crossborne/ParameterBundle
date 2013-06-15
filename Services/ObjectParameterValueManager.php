@@ -56,7 +56,7 @@ class ObjectParameterValueManager {
 		");
 		if ($rootId !== null)
 			$query->setParameter("parent", $rootId);
-		$query->useResultCache(true, 3600, 'parameters');
+		$query->useResultCache(true, 3600, 'parameters'.$rootId);
 		$roots = $query->getResult();
 
 		if (!$roots)

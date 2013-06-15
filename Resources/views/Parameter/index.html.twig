@@ -1,13 +1,23 @@
 {% extends '::base.html.twig' %}
 
+{% block caption %}
+    {% set c = e.caption %}
+    {% if e.getParent() %}
+        {% set e = e.getParent() %}
+        {{ block('caption') }}>
+    {% endif %}
+    {{ c }}
+{% endblock %}
+
 {% block body -%}
+
+<div id="content">
     <h1>Parameter list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Parent</th>
                 <th>Caption</th>
                 <th>Type</th>
                 <th>Units</th>
@@ -19,8 +29,13 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('parameter_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.parent }}</td>
-                <td>{{ entity.caption }}</td>
+                <td style="font-size: 8pt;">
+                    {% set e = entity.getParent() %}
+                    {% if e %}
+                        {{ block('caption') }} >
+                    {% endif %}
+                    {{ entity.caption }}
+                </td>
                 <td>{{ entity.type }}</td>
                 <td>{{ entity.units }}</td>
                 <td>{{ entity.sort }}</td>
@@ -46,4 +61,5 @@
             </a>
         </li>
     </ul>
-    {% endblock %}
+</div>
+{% endblock %}

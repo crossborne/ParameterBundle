@@ -42,15 +42,15 @@ class AddFieldByTypeSubscriber implements EventSubscriberInterface {
 		switch($data->getParameter()->getType()) {
 			case Parameter::TYPE_NUMBER:
 				$form->add('value', 'number', array(
-					'label' => $data->getParameter()->getCaption(),
-					'required' => $data->getParameter()->getRequired(),
+					'label' => $data->getParameter()->getCaption() . $data->getParameter()->getFormHelpers(),
+					'required' => $data->getParameter()->isRequired(),
 					'attr' => array('append_input' => $data->getParameter()->getUnits(), 'class' => 'span1')
 				));
 				break;
 			case Parameter::TYPE_STRING:
 				$form->add('value', 'text', array(
-					'label' => $data->getParameter()->getCaption(),
-					'required' => $data->getParameter()->getRequired(),
+					'label' => $data->getParameter()->getCaption() . $data->getParameter()->getFormHelpers(),
+					'required' => $data->getParameter()->isRequired(),
 					'attr' => array(
 						'class' => 'span2',
 						'data-parameterCallback' => $this->router->generate("parametervalue", array(
@@ -64,29 +64,30 @@ class AddFieldByTypeSubscriber implements EventSubscriberInterface {
 				$form->add('value', 'choice', array(
 					'label' => $data->getParameter()->getCaption(),
 					'choices' => $data->getParameter()->getChoices(),
-					'expanded' => (count($data->getParameter()->getChoices()) > 2) ? false : true,
+					'expanded' => (count($data->getParameter()->getChoices()) > 2) ? false : false,
 					'attr' => (count($data->getParameter()->getChoices()) > 2) ? array('class' => 'span2') : array(),
 					'multiple' => false,
-					'required' => $data->getParameter()->getRequired(),
+					'required' => $data->getParameter()->isRequired(),
+					'empty_value' => 'Vybrat'
 				));
 				break;
 			case Parameter::TYPE_BOOLEAN:
 				$form->add('value', 'checkbox', array(
 					'label' => $data->getParameter()->getCaption(),
-					'required' => $data->getParameter()->getRequired(),
+					'required' => $data->getParameter()->isRequired(),
 					'data' => (bool) $data->getValue()
 				));
 				break;
 			case Parameter::TYPE_TAGS:
 				$form->add('value', 'textarea', array(
 					'label' => $data->getParameter()->getCaption(),
-					'required' => $data->getParameter()->getRequired(),
+					'required' => $data->getParameter()->isRequired(),
 				));
 				break;
 			default:
 				$form->add('value', 'text', array(
 					'label' => $data->getParameter()->getCaption() . ' _ DEFAULT',
-					'required' => $data->getParameter()->getRequired()
+					'required' => $data->getParameter()->isRequired()
 				));
 				break;
 		}

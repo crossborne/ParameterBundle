@@ -295,7 +295,7 @@ class Parameter
 	/**
 	 * @return boolean
 	 */
-	public function getRequired()
+	public function isRequired()
 	{
 		return $this->required;
 	}
