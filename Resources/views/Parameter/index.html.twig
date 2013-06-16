@@ -17,7 +17,7 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Key</th>
                 <th>Caption</th>
                 <th>Type</th>
                 <th>Units</th>
@@ -28,7 +28,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('parameter_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('parameter_show', { 'id': entity.id }) }}">{{ entity.key }}</a></td>
                 <td style="font-size: 8pt;">
                     {% set e = entity.getParent() %}
                     {% if e %}
