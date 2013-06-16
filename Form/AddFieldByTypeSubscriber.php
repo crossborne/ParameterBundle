@@ -68,7 +68,7 @@ class AddFieldByTypeSubscriber implements EventSubscriberInterface {
 					'attr' => (count($data->getParameter()->getChoices()) > 2) ? array('class' => 'span2') : array(),
 					'multiple' => false,
 					'required' => $data->getParameter()->isRequired(),
-					'empty_value' => 'Vybrat'
+					'empty_value' => $data->getParameter()->isRequired() ? 'Vybrat' : false
 				));
 				break;
 			case Parameter::TYPE_BOOLEAN:
