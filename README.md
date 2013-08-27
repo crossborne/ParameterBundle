@@ -3,7 +3,7 @@ ParameterBundle
 
 A symfony2 bundle handling various types of parameters for your entity
 
-THIS IS JUST PROTOTYPE, feel free to contribute, the bundle still needs a lot of optimization
+THIS IS JUST PROTOTYPE, feel free to contribute, the bundle still needs a lot of optimization as is caching query results and so...
 
 Installation
 ------------
@@ -125,3 +125,8 @@ And in your twig template just use:
 
 Now it should be ready to use!
 ------------------------------
+
+TODO:
+- filter assistant for searching products by parameters
+- optimize database queries
+- caching query results
